@@ -1,0 +1,20 @@
+﻿@model IEnumerable<CheckPoint4.Models.Instrument>
+
+@{
+    ViewBag.Title = "Rentals";
+}
+
+<h2>Rentals</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        @Html.ActionLink(item.InstrumentDesc,"Create", new { id=item.InstrumentID})
+        <br />
+    }
+</table>

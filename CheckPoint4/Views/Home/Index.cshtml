@@ -2,30 +2,61 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/Main.css" />
+</head>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+<body class="body-landing">
+    <div class="jumbotron" style="text-align:center">
+        <h1>Welcome to Blow Out!</h1>
+        <p>Home of the finest instrument rentals, we guarantee you will be satisfied!</p>
+        <p class="lead">
+            We will make your rental experience fun and easy.<br />
+            You can rent both new and used instruments.<br />
+            Click the link below to start renting today!
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a href="~/Home/Rentals" class="btn btn-primary btn-lg blue-button">Rent Instruments Now &raquo;</a></p>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <p class="lead white-bg text-center">
+                "It's easy to play any musical instrument:<br />
+                all you have to do is touch the right key at the right time and the instrument will play itself”.<br />
+                - Johann Sebastian Bach
+            </p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <div class="row">
+        <!-- Link to Rentals-->
+        <div class="col-md-4 bg-light text-dark" style="text-align:center">
+            <h2 class="white-bg">Premium Rentals</h2>
+            <p class="white-bg">
+                Whether you are renting for the long-term or just a short period, we commit to giving you the best service anywhere.
+                We guarantee you will love the quality of instruments we provide.
+            </p>
+            <p><a class="btn btn-default blue-button" href="~/Home/Rentals">Rent today &raquo;</a></p>
+        </div>
+        <!-- Link to About -->
+        <div class="col-md-4 bg-light text-dark" style="text-align:center">
+            <h2 class="white-bg">About BlowOut</h2>
+            <p class="white-bg">
+                We have been in the rental business since early 2007.
+                Our core beliefs are providing quality rentals, treating customers like family, and bringing joy to others through music.
+            </p>
+            <p><a class="btn btn-default blue-button" href="~/Home/About">Learn more &raquo;</a></p>
+        </div>
+        <!-- Link to Contact -->
+        <div class="col-md-4 bg-light text-dark" style="text-align:center">
+            <h2 class="white-bg">Contact Us</h2>
+            <p class="white-bg">
+                You can contact us by phone, email, or making an appointment with our instrument rental specialists. Whatever method you choose,
+                we would love to hear from you today!
+            </p>
+            <p><a class="btn btn-default blue-button" href="~/Home/Contact">Contact us &raquo;</a></p>
+        </div>
     </div>
-</div>
+</body>
