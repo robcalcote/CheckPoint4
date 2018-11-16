@@ -4,6 +4,25 @@
     ViewBag.Title = "Summary";
 }
 
-<h2>Summary</h2>
-@ViewBag.Client.ClientFirstName
-@ViewBag.Instrument.InstrumentDesc
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Graphics/Blue.css" />
+</head>
+
+<body class="body-summary">
+    <div class="jumbotron" style="text-align:center">
+        <h1>Thank You for your Order (order ID #@ViewBag.ClientID)</h1>
+        <h2>Your order is outlined below:</h2>
+        <p class="lead">
+            <u>Instrument Information</u><br />
+            @ViewBag.InstrumentDesc, @ViewBag.InstrumentType, $@ViewBag.InstrumentPrice per month.<br /><br />
+            <u>Customer Information</u><br />
+            @ViewBag.ClientFirstName @ViewBag.ClientLastName, @ViewBag.ClientAddress @ViewBag.ClientCity, @ViewBag.ClientZip @ViewBag.ClientState<br /><br />
+            <u>If we have any questions we will contact you at:</u> <br/>
+            @ViewBag.ClientEmail Or @ViewBag.ClientPhone
+        </p>
+        <img src="@ViewBag.InstrumentPic" />
+        <p><a href="~/Home/Rentals" class="btn btn-primary btn-lg blue-button">Rent another instrument? &raquo;</a></p>
+    </div>
+</body>

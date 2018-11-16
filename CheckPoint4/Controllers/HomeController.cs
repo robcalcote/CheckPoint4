@@ -31,7 +31,7 @@ namespace CheckPoint4.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientAddress,ClientCity,ClientState,ClientEmail,ClientPhone")] Client client, int ID)
+        public ActionResult Create([Bind(Include = "ClientID,ClientFirstName,ClientLastName,ClientAddress,ClientCity,ClientState,ClientZip,ClientEmail,ClientPhone")] Client client, int ID)
         {
             if (ModelState.IsValid)
             {
@@ -58,8 +58,47 @@ namespace CheckPoint4.Controllers
             Client client = db.Client.Find(ClientID);
             Instrument instrument = db.Instrument.Find(InstrumentID);
 
-            ViewBag.Client = client;
+            // These viewbags store a summary of what the customer checked out with
+            ViewBag.InstrumentDesc = instrument.InstrumentDesc;
+            ViewBag.InstrumentType = instrument.InstrumentType;
+            ViewBag.InstrumentPrice = instrument.InstrumentPrice;
+            ViewBag.ClientFirstName = client.ClientFirstName;
+            ViewBag.ClientLastName = client.ClientLastName;
+            ViewBag.ClientAddress = client.ClientAddress;
+            ViewBag.ClientCity = client.ClientCity;
+            ViewBag.ClientState = client.ClientState;
+            ViewBag.ClientZip = client.ClientZip;
+            ViewBag.ClientEmail = client.ClientEmail;
+            ViewBag.ClientPhone = client.ClientPhone;
             ViewBag.Instrument = instrument;
+            ViewBag.ClientID = client.ClientID;
+
+            // This stores images for the Viewbag depending on what image the customer selected
+
+            if (ViewBag.InstrumentDesc == "Trumpet")
+            {
+                    ViewBag.InstrumentPic = "~/Graphics/Trumpet.jpg";
+            }
+            else if (ViewBag.InstrumentDesc == "Trombone")
+            {
+                ViewBag.InstrumentPic = "~/Graphics/Trombone.jpg";
+            }
+            else if (ViewBag.InstrumentDesc == "Flute")
+            {
+                ViewBag.InstrumentPic = "~/Graphics/Flute.jpg";
+            }
+            else if (ViewBag.InstrumentDesc == "Clarinet")
+            {
+                ViewBag.InstrumentPic = "~/Graphics/Clarinet.jpg";
+            }
+            else if (ViewBag.InstrumentDesc == "Tuba")
+            {
+                ViewBag.InstrumentPic = "~/Graphics/Tuba.jpg";
+            }
+            else if (ViewBag.InstrumentDesc == "Saxophone")
+            {
+                ViewBag.InstrumentPic = "~/Graphics/Saxophone.jpg";
+            };
 
             return View();
         }
