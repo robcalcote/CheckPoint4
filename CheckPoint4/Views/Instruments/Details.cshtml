@@ -1,0 +1,50 @@
+﻿@model CheckPoint4.Models.Instrument
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Instrument</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client.ClientFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client.ClientFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InstrumentDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstrumentDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InstrumentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstrumentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InstrumentPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstrumentPrice)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InstrumentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
