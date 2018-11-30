@@ -117,6 +117,26 @@ namespace CheckPoint4.Controllers
             return View();
         }
 
+        public ActionResult  Login()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult SignIn(FormCollection form)
+        {
+            string sUsername = form["Username"].ToString();
+            string sPassword = form["Password"].ToString();
+            ViewBag.UnsuccessfulLogin = "Your Username and/or password did not match our records. Please try again";
+
+            if ((sUsername == "Missouri") && (sPassword == "ShowMe"))
+            {
+                return View("SuccessfulLogin");
+            }
+            else
+            {
+                return View("Login");
+            }
+        }
     }
 }
