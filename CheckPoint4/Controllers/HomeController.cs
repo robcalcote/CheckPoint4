@@ -117,7 +117,7 @@ namespace CheckPoint4.Controllers
             return View();
         }
 
-        public ActionResult  Login()
+        public ActionResult Login()
         {
             return View();
         }
@@ -131,12 +131,22 @@ namespace CheckPoint4.Controllers
 
             if ((sUsername == "Missouri") && (sPassword == "ShowMe"))
             {
-                return View("SuccessfulLogin");
+                // This will navigate you to the ActionResult listed below - a new list which shows clients and the instruments they rent
+                return View("LoginSuccess");
             }
             else
             {
+                // This will navigate you back to the login page if authentication is unsuccessful
                 return View("Login");
             }
+        }
+
+        // Successful login view (Accesses Model within a model)
+        public ActionResult LoginSuccess()
+        {
+            ClientInstrument clientinstrument = new ClientInstrument();
+
+            return View();
         }
     }
 }

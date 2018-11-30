@@ -1,0 +1,33 @@
+﻿@model CheckPoint4.Models.ClientInstrument
+
+@{
+    ViewBag.Title = "Owned Instruments";
+}
+
+<h2>Login Successessful</h2>
+<h3>Please see the list of Clients and the Instruments they own below</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.client.ClientID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.client.ClientFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.client.ClientLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.client.ClientPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.client.ClientEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.client.ClientAddress)
+        </th>
+    </tr>
+    
+</table>
+
