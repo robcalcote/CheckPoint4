@@ -40,3 +40,17 @@
     border-width: 1px;
     border-color: black;
 }
+
+
+wrapper {
+    overflow: hidden;
+}
+
+caption {
+    float: right;
+    
+}
+
+invalid {
+    color: red !important;
+}
