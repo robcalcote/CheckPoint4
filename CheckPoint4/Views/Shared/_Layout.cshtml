@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="~/Content/Main.css" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -24,6 +25,11 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Rentals", "Rentals", "Home")</li>
+                </ul>
+            </div>
+            <div class="wrapper">
+                <ul class="caption">
+                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
                 </ul>
             </div>
         </div>

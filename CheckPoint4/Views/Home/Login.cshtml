@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+<head>
+    <link rel="stylesheet" href="~/Content/Main.css" />
+</head>
+<br />
+<h2>Please Login with your Username and Password</h2>
+
+@using (Html.BeginForm("SignIn", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="text-danger">
+            <p>@ViewBag.UnsuccessfulLogin</p>
+        </div>
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="inputUsername">Username</label>
+                @Html.TextBox("Username")
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="inputPassword">Password</label>
+                @Html.Password("Password")
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
