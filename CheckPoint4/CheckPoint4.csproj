@@ -162,8 +162,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ClientInstrument.cs" />
     <Compile Include="Models\Instrument.cs" />
-    <Compile Include="Models\NewClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
