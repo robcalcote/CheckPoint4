@@ -1,10 +1,11 @@
-﻿@model IEnumerable<CheckPoint4.Models.ClientInstrument>
+﻿@model IEnumerable<CheckPoint4.Models.Instrument>
 
 @{
     ViewBag.Title = "Owned Instruments";
 }
 
-<h2>Login Successessful</h2>
+<br />>
+<h2>Login Successful</h2>
 <h3>Please see the list of Clients and the Instruments they own below</h3>
 
 <table class="table">
@@ -22,21 +23,20 @@
             @Html.DisplayNameFor(model => model.client.ClientPhone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.instrument.InstrumentID)
+            @Html.DisplayNameFor(model => model.InstrumentID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.instrument.InstrumentDesc)
+            @Html.DisplayNameFor(model => model.InstrumentDesc)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.instrument.InstrumentPrice)
+            @Html.DisplayNameFor(model => model.InstrumentPrice)
         </th>
         <th><!--Empty for the purpose of having another table header.. This is where the Delete button will go--></th>
     </tr>
-    @foreach (var item in Model)
-    {
+    @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.client.ClientID)
+            @Html.DisplayFor(modelItem => item.ClientID)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.client.ClientFirstName)
@@ -48,16 +48,17 @@
             @Html.DisplayFor(modelItem => item.client.ClientPhone)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.instrument.InstrumentID)
+            @Html.DisplayFor(modelItem => item.InstrumentID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.instrument.InstrumentDesc)
+            @Html.DisplayFor(modelItem => item.InstrumentDesc)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.instrument.InstrumentPrice)
+            @Html.DisplayFor(modelItem => item.InstrumentPrice)
         </td>
         <td>
-            @Html.ActionLink("Delete", "Delete", new { id = item.client.ClientID })
+            @Html.ActionLink("Edit", "Edit", "Clients", new { id = item.ClientID }, null) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ClientID })
         </td>
     </tr>
     }

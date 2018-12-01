@@ -18,9 +18,18 @@ namespace CheckPoint4.Controllers
         // GET: Instruments
         public ActionResult Index()
         {
-            var instrument = db.Instrument.Include(i => i.Client);
+            var instrument = db.Instrument.Include(i => i.client);
             return View(instrument.ToList());
         }
+
+        //// View and delete Clients
+        //// Successful login view (Accesses Model within a model)
+        //[HttpPost]
+        //public ActionResult LoginSuccess()
+        //{
+        //    var instrument = db.Instrument.Include(i => i.Client);
+        //    return View(db.Instrument.ToList());
+        //}
 
         // GET: Instruments/Details/5
         public ActionResult Details(int? id)

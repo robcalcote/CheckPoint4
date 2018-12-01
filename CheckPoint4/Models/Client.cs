@@ -14,6 +14,7 @@ namespace CheckPoint4.Models
         [Key]
         [Required]
         [DisplayName("Client ID")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ClientID { get; set; }
         [Required]
         [DisplayName("Client First Name")]

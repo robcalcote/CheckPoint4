@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using CheckPoint4.DAL;
 using CheckPoint4.Models;
+using System.Data.Entity;
 
 namespace CheckPoint4.Controllers
 {
@@ -124,7 +125,7 @@ namespace CheckPoint4.Controllers
         }
 
         [HttpPost]
-        public ActionResult SignIn(FormCollection form)
+        public ActionResult LoginSuccess(FormCollection form)
         {
             string sUsername = form["Username"].ToString();
             string sPassword = form["Password"].ToString();
@@ -133,7 +134,7 @@ namespace CheckPoint4.Controllers
             if ((sUsername == "Missouri") && (sPassword == "ShowMe"))
             {
                 // This will navigate you to the ActionResult listed below - a new list which shows clients and the instruments they rent
-                return View("LoginSuccess");
+                return View(db.Instrument.ToList());
             }
             else
             {
@@ -142,40 +143,17 @@ namespace CheckPoint4.Controllers
             }
         }
 
-
-        // View and delete Clients
-        // Successful login view (Accesses Model within a model)
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult LoginSuccess(ClientInstrument clientinstrument)
+        public ActionResult Delete(int id)
         {
-            return View(clientinstrument);
-        }
-
-        // This ActionMethod is to delete records from the existing records
-        public ActionResult DeleteRecord(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Client client = db.Client.Find(id);
-            if (client == null)
-            {
-                return HttpNotFound();
-            }
-            return View(client);
-        }
-
-        // POST: Client/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Client client = db.Client.Find(id);
-            db.Client.Remove(client);
+            Client newclient = db.Client.Find(id);
+            db.Client.Remove(newclient);
             db.SaveChanges();
-            return RedirectToAction("LoginSuccess");
+            List<Instrument> newinstrument = db.Instrument.Where(i => i.ClientID == id).ToList();
+            Instrument lastinstrument = newinstrument.Find(i => i.ClientID == id);
+            lastinstrument.ClientID = null;
+            db.Entry(lastinstrument).State = EntityState.Modified;
+            db.SaveChanges();
+            return View("LoginSuccess", db.Instrument.ToList());
         }
     }
 }
