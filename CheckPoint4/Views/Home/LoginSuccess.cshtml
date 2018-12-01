@@ -1,4 +1,4 @@
-﻿@model CheckPoint4.Models.ClientInstrument
+﻿@model IEnumerable<CheckPoint4.Models.ClientInstrument>
 
 @{
     ViewBag.Title = "Owned Instruments";
@@ -22,12 +22,45 @@
             @Html.DisplayNameFor(model => model.client.ClientPhone)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.client.ClientEmail)
+            @Html.DisplayNameFor(model => model.instrument.InstrumentID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.client.ClientAddress)
+            @Html.DisplayNameFor(model => model.instrument.InstrumentDesc)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.instrument.InstrumentPrice)
+        </th>
+        <th><!--Empty for the purpose of having another table header.. This is where the Delete button will go--></th>
     </tr>
-    
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.client.ClientID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.client.ClientFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.client.ClientLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.client.ClientPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.instrument.InstrumentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.instrument.InstrumentDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.instrument.InstrumentPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.client.ClientID })
+        </td>
+    </tr>
+    }
+
 </table>
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CheckPoint4.DAL;
@@ -141,12 +142,40 @@ namespace CheckPoint4.Controllers
             }
         }
 
-        // Successful login view (Accesses Model within a model)
-        public ActionResult LoginSuccess()
-        {
-            ClientInstrument clientinstrument = new ClientInstrument();
 
-            return View();
+        // View and delete Clients
+        // Successful login view (Accesses Model within a model)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LoginSuccess(ClientInstrument clientinstrument)
+        {
+            return View(clientinstrument);
+        }
+
+        // This ActionMethod is to delete records from the existing records
+        public ActionResult DeleteRecord(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Client client = db.Client.Find(id);
+            if (client == null)
+            {
+                return HttpNotFound();
+            }
+            return View(client);
+        }
+
+        // POST: Client/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Client client = db.Client.Find(id);
+            db.Client.Remove(client);
+            db.SaveChanges();
+            return RedirectToAction("LoginSuccess");
         }
     }
 }
