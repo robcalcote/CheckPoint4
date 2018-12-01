@@ -143,6 +143,7 @@ namespace CheckPoint4.Controllers
             }
         }
 
+        // Delete method
         public ActionResult Delete(int id)
         {
             Client newclient = db.Client.Find(id);
